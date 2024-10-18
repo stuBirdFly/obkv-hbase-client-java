@@ -487,7 +487,6 @@ public class OHTableMultiColumnFamilyTest {
                 assertEquals(expectedValue, keyValues[i].getValue());
             }
         }
-        System.out.println(Arrays.toString(result2.raw()));
         assertEquals(3, keyValues.length);
 
         //f2c1 f2c2
@@ -529,6 +528,8 @@ public class OHTableMultiColumnFamilyTest {
 
         for (int i = 0; i < rows; ++i) {
             Put put = new Put(toBytes("Key" + i));
+            Delete delete = new Delete(toBytes("Key" + i));
+            hTable.delete(delete);
             put.add(family1, family1_column1, family1_value);
             put.add(family1, family1_column2, family1_value);
             put.add(family1, family1_column3, family1_value);
