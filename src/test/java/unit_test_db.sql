@@ -22,6 +22,15 @@ CREATE TABLE `test$family1` (
     PRIMARY KEY (`K`, `Q`, `T`)
 );
 
+CREATE TABLE `test$cellTTLFamily` (
+    `K` varbinary(1024) NOT NULL,
+    `Q` varbinary(256) NOT NULL,
+    `T` bigint(20) NOT NULL,
+    `V` varbinary(1024) DEFAULT NULL,
+    `TTL` bigint(20) DEFAULT NULL,
+    PRIMARY KEY (`K`, `Q`, `T`)
+);
+
 CREATE TABLE `test_t$partitionFamily1` (
     `K` varbinary(1024) NOT NULL,
     `Q` varbinary(256) NOT NULL,
@@ -195,6 +204,17 @@ CREATE TABLE `test_multi_cf$family_with_group2` (
     `V` varbinary(1024) DEFAULT NULL,
     PRIMARY KEY (`K`, `Q`, `T`) 
 ) TABLEGROUP = test_multi_cf PARTITION BY KEY(`K`) PARTITIONS 3;
+
+CREATE TABLE `test$familyTTL` (
+    `K` varbinary(1024) NOT NULL,
+    `Q` varbinary(256) NOT NULL,
+    `T` bigint(20) NOT NULL,
+    `V` varbinary(1024) DEFAULT NULL,
+     `TTL` bigint(20) DEFAULT NULL,
+    PRIMARY KEY (`K`, `Q`, `T`)
+);
+
+
 
 CREATE TABLE `test_multi_cf$family_with_group3` (
     `K` varbinary(1024) NOT NULL,
